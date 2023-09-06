@@ -1,0 +1,36 @@
+#+title: Merhaba Rust
+
+* Yeni proje oluşturalım
+~rustup~ ve ~cargo~ kurulumlarını başarılı bir şekilde tamamladıktan sonra ilk Rust projemizi yazmaya hazırız. Basit bir "Merhaba, dünya!" uygulaması yazacağız.
+
+#+begin_src shell
+cd ~/Development # Ya da projeleriniz hangi klasörde tutmayı seviyorsanız oraya gidin.
+cargo new merhaba-dunya
+tree merhaba-dunya
+#+end_src
+
+#+begin_src
+merhaba-dunya/
+├── Cargo.toml
+└── src
+    └── main.rs
+
+2 directories, 2 files
+#+end_src
+
+Her Rust projesinin içinde ~Cargo.toml~ adında bir dosya vardır. Projemizi derleyebilmemiz için gerekli bilgileri içerir. Örneğin proje ismi, geliştiricisi, versiyonu ve bağımlı (dependency) olduğumuz kütüphanelerin isimleri vardır. Projemizin kaynak kodlarını ~src/~ klasöründe tutarız. Ama dosyalarımızı nerede tutacağımızı ~Cargo.toml~ dosyasını düzenleyerek değiştirebiliriz tabii ki de. ~Cargo.toml~ dosyasına daha detaylı bir şekilde ileriki bölümlerde değineceğiz.
+
+* main.rs dosyasında ne var?
+#+begin_src shell
+cat merhaba-dunya/src/main.rs
+#+end_src
+
+#+begin_src rust
+fn main() {
+    println!("Hello, world!");
+}
+#+end_src
+
+Cargo bizim için "Hello, world!" yazmış bile. Bir çok derlenen (compiled) dillerde olduğu gibi programımız ~main~ fonksiyonundan çalışmaya başlayacaktır. Rust'da fonksiyonlar ~fn~ anahtar kelimesi ile tanımlanır. Şu anda ~main~ fonksiyonun yaptığı tek şey ~println!~ "fonksiyonunu" çağırmak. Aslında ~println!~ bir fonksiyon değil. Sonu ~!~ işareti ile biten her şey bir makrodur (macro). İleride daha detaylı anlatacağım ama şu an için ~println!~'ı bir fonksiyon olarak düşünebilirsiniz.
+
+Programı çalıştırmak için komut panelinde ~cargo run~ yazmanız yeterli olacaktır. Bu komut projemizi derleyip çalıştıracaktır. Farkettiyseniz ~target~ isimli yeni bir klasör oluştu. Bu klasör derleyici tarafından oluşturulan dosyaların tutulduğu yerdir. Ayrıca kullandığımız bağımlılıklar da bu klasöre indirilir.
